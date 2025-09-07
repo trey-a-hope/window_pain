@@ -4,7 +4,11 @@ import 'package:window_manager/window_manager.dart';
 
 class WindowPain {
   static Future<void> maximizeWindow() async {
-    if (!UniversalPlatform.isDesktopOrWeb) return;
+    if (!UniversalPlatform.isLinux &&
+        !UniversalPlatform.isWindows &&
+        !UniversalPlatform.isMacOS) {
+      return;
+    }
 
     await windowManager.ensureInitialized();
 
